@@ -3,20 +3,27 @@ Demo CVX solver before cleaning everything up for submission.
 %}
 clc; clear all; close all;
 
-%% Define Constants
-MU = 398600 * 1e9; % m^3 / s^2
-R_E = 6378 * 1e3; % m
-ALT = 550 * 1e3; % m
-T_MAX = 200 * 1e-3; % kg * m/s^2
-M = 50; % kg
-T_F = 30 * 60; % seconds
-N = 100; % # of discretization points
+%% Define Solution Parameters
 
-% Angular velocity of LVLH frame
-OMEGA = sqrt(MU / (ALT + R_E)^3); % = rad / s
+% Constants
+params.MU = 398600 * 1e9; % m^3 / s^2
+params.R_E = 6378 * 1e3; % m
+params.ALT = 550 * 1e3; % m
+params.T_MAX = 200 * 1e-3; % kg * m/s^2
+params.M = 50; % kg
+
+% Solution parameters
+params.X_0 = [-1e3, 0, 0, 0, 0, 0]'; % start point
+params.X_F = [0, 0, 0, 0, 0, 0]'; % goal point
+params.T_F = 30 * 60; % finish time in seconds
+params.N = 100; % # of discretization points
+
 
 %% Define System
 dt = T_F / N;
+
+% Angular velocity of LVLH frame
+OMEGA = sqrt(params.MU / (params.ALT + params.R_E)^3); % = rad / s
 
 A = [0, 0, 0, 1, 0, 0; ...
      0, 0, 0, 0, 1, 0; ...
@@ -36,9 +43,6 @@ G = B*dt;
 
 %% Build Problem
 
-X_0 = [-1e3, 0, 0, 0, 0, 0]';
-X_F = [0, 0, 0, 0, 0, 0]';
-
 cvx_begin
     variable X(6, N)
     variable U(3, N-1)
@@ -47,8 +51,8 @@ cvx_begin
     minimize( sum(S(:)) )
     subject to
         % Boundary conditions
-        X(:, 1) == X_0;
-        X(:, N) == X_F;
+        X(:, 1) == params.X_0;
+        X(:, N) == params.X_F;
 
         % Actuator limits
         U(:) <= T_MAX;
@@ -56,6 +60,7 @@ cvx_begin
 
         % L1 norm variables
         S(:) >= 0;
+        S(:) <= 3 * T_MAX;
 
         for i = 1 : N-1
             % Dynamics
