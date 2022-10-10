@@ -34,8 +34,7 @@ U = optimvar('U', 3, params.N - 1, ...
 
 % Constraint variables for L1 optimization
 S = optimvar('S', 3, params.N - 1, ...
-    "LowerBound", 0, ...
-    "UpperBound", 3 * params.T_MAX);
+    "LowerBound", 0);
 
 problem = optimproblem;
 problem.Objective = sum(S, 'all');

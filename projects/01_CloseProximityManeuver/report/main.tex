@@ -3,6 +3,7 @@
 
 \usepackage{amsthm,amssymb,amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -10,7 +11,7 @@
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\CC}{\mathbb{C}}
 
-\title{AERO7970 - Trajectory Optimiztion // {\small Project 01}}
+\title{AERO7970 - Trajectory Optimiztion \\ {\small Project 01}}
 \author{Matt Boler}
 \date{\today}
 
@@ -19,35 +20,91 @@
 \maketitle
 
 \begin{abstract}
-  Words here!
+  This report details the implementation of a fuel-optimal close-proximity rendezvous maneuver.
+  The solution was implemented in \texttt{Matlab} using both the built-in \texttt{solve} function and the \texttt{CVX} library.
+  Included are performance comparisons and the resulting trajectories and control inputs.
 \end{abstract}
 
 %%
-\section{Question 1}
+\section{Problem Modeling}
 
-\subsection*{Solution}
-\begin{proof}
-  Write your proof here.
-\end{proof}
-
-%%
-\section*{Some LaTeX Commands}
-
-Here are some example sentences using LaTeX commands:\\
-If $a\equiv 2\pmod{3}$, then $a^2\equiv 1\pmod 3$.\\
-If $x$ and $y$ are positive real numbers, the arithmetic mean is $\dfrac{x+y}{2}$ and the geometric mean is $\sqrt{xy}$.\\
-The union of two sets is $A\cup B$ and the intersection of two sets is $A\cap B$.\\
-Let $(x,y)\in A\times B$.\\
-Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $f(x)=x^{2019}$.\\
-In set-builder notation,  the set of all odd integers is $\{2k+1\mid k\in\mathbb{Z}\}$.\\
-Suppose that
-\[1+3+5+\cdots+(2k-1) = k^2.\]
-Note that if $a=2k$, then
+We are given the following optimization problem:
 \begin{align*}
-    a^2+3a+5 &= (2k)^2+3(2k)+5 \\
-             &= 4k^2+6k+4+1 \\
-             &= 2(2k^2+3k+2)+1.
+  \min_{X, U} \quad & \sum_{i=1}^{N-1} ||U_i||_{L1} \\
+  \textrm{s.t.} \quad & \dot{X}_t = AX_t + BU_t \\
+  & T_{min} \leq U_{i} \leq T_{max} \\
+  & X_0 = \begin{bmatrix}
+    -1e3 & 0 & 0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  & X_N = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0
+  \end{bmatrix}
 \end{align*}
-If $g\circ f$ is surjective, then $g$ is surjective.\\
+
+While the L1-norm is not strictly a linear performance criterion, we can introduce a set of slack variables $S \geq 0$ to bound the control input $U$ and then minimize their sum as an LP problem.
+Additionally, we must convert the continuous-time dynamics constraint into a discretized form.
+We use a zero-order hold discretization to convert the dynamics:
+\begin{align*}
+  \dot{X} = AX + BU \rightarrow X_{k+1} = expm(A*dt) X_k + B*dt * U_k
+\end{align*}
+
+Restructuring the problem as such results in:
+\begin{align*}
+  \min_{X, U, S} \quad & \sum_{i = 1}^{N-1} S_i \\
+  \textrm{s.t.} \quad & X_{i+1} = expm(A*dt) * X_i + B*dt*U_i \\
+  & S_i \geq 0 \\
+  & -S_i \leq U_i \leq S_i \\
+  & T_{min} \leq U_{i} \leq T_{max} \\
+  & X_0 = \begin{bmatrix}
+    -1e3 & 0 & 0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  & X_N = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+which was then implemented in problem-based form in \texttt{Matlab} and \texttt{CVX}.
+
+\section{Results}
+
+After implementing the problem in \texttt{Matlab} and \texttt{CVX}, the formulation-to-solution code was timed and averaged over 10 runs.
+The average times are shown below in Table \ref{tab:timing}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | c |}
+  \hline
+  Solver & Average Time (s) \\ \hline
+  Linprog (Dual-Simplex) & 0.41164 \\
+  Linprog (Interior-Point) & 0.22449 \\
+  CVX & 0.73741 \\ \hline
+\end{tabular}
+\caption{Average formulation-to-solution time for considered solvers}
+\label{tab:timing}
+\end{table}
+
+The resulting trajectories and control inputs are shown below in Figures \ref{fig:trajectories} and \ref{fig:controls}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/trajectories.png}
+  \caption{Generated trajectories from each solver}
+  \label{fig:trajectories}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/controls.png}
+  \caption{Generated control inputs from each solver}
+  \label{fig:controls}
+\end{figure}
+
+Additionally, it was found using \texttt{linprog} with the \texttt{dual-simplex} method that the minimum time needed to perform the maneuver was 21 minutes.
+
+\section*{Conclusion}
+
+The main challenges faced in this project were in formulating the optimization problem - it took several tries before \texttt{Matlab} recognized the L1 slack-variable formulation as an LP.
+Additionally,\texttt{ CVX}'s documentation is sparse when it comes to LP problems and it took some time to get a feel for its error messages.
+What I learned from this project is both the value of being able to rearrange nonlinear problem components to fit into an LP problem and also that I \textit{vastly} prefer problem-based modeling to calling solver functions like I have in the past.
+I spent approximately 8 hours on this project.
 
 \end{document}

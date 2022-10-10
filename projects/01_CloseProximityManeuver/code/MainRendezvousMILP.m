@@ -5,7 +5,7 @@ Project 1 - Rendezvous
 @author Matt Boler
 @date 10/07/2022
 %}
-clc; clear all; close all;
+clear all; close all;
 
 import soln.*;
 
@@ -51,41 +51,46 @@ for i = 1 : n_comp
         scatter(X_simplex(1,:), X_simplex(2,:), 'o');
         hold on
         scatter(X_interior(1,:), X_interior(2,:), '*');
-        legend("Dual-Simplex", "Interior-Point");
+        scatter(X_cvx(1,:), X_cvx(2,:), '+')
+        legend("Dual-Simplex", "Interior-Point", "CVX");
         xlabel("X (m)")
         ylabel("Y (m)")
         title("Trajectory Comparisons")
 
         figure(2)
 
-        time = linspace(1, params.T_F / 60, params.N - 1);
+        time = linspace(0, params.T_F / 60 - 1, params.N - 1);
 
         subplot(3,1,1)
         plot(time, U_simplex(1, :), 'o');
         hold on
-        plot(time, U_interior(1,:), '*')
+        plot(time, U_interior(1,:), '*');
+        plot(time, U_cvx(1,:), '+')
         title("Thrust X-Component")
-        legend("Dual-Simplex", "Interior-Point")
+        legend("Dual-Simplex", "Interior-Point", "CVX", "Location", 'southwest')
         xlabel('Time (Min)')
         ylabel('Thrust (N)')
+        ylim([-params.T_MAX, params.T_MAX])
 
         subplot(3,1,2)
         plot(time, U_simplex(2, :), 'o');
         hold on
-        plot(time, U_interior(2,:), '*')
+        plot(time, U_interior(2,:), '*');
+        plot(time, U_cvx(2,:), '+')
         title("Thrust Y-Component")
-        legend("Dual-Simplex", "Interior-Point")
         xlabel("Time (Min)")
         ylabel("Thrust (N)")
+        ylim([-params.T_MAX, params.T_MAX])
 
         subplot(3,1,3)
         plot(time, U_simplex(3, :), 'o');
         hold on
-        plot(time, U_interior(3,:), '*')
+        plot(time, U_interior(3,:), '*');
+        plot(time, U_cvx(3,:), '+');
         title("Thrust Z-Component")
-        legend("Dual-Simplex", "Interior-Point")
         xlabel("Time (Min)")
         ylabel("Thrust (N)")
+        ylim([-params.T_MAX, params.T_MAX])
     end
 end
 

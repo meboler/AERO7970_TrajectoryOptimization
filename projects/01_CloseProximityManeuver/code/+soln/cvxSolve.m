@@ -43,7 +43,6 @@ cvx_begin quiet
 
         % L1 norm variables
         S(:) >= 0;
-        S(:) <= 3 * params.T_MAX;
 
         for i = 1 : params.N - 1
             % Dynamics
@@ -55,7 +54,7 @@ cvx_begin quiet
         end
 cvx_end
 
-status = cvx_status == 'Solved';
+status = strcmp(cvx_status, 'Solved');
 
 end
 
