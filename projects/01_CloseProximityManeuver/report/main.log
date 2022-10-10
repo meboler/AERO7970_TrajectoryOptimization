@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.6)  10 OCT 2022 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.6)  10 OCT 2022 16:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -181,31 +181,42 @@ Overfull \hbox (2.26678pt too wide) in paragraph at lines 23--26
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<images/trajectories.png, id=19, 429.10312pt x 310.91156pt>
-File: images/trajectories.png Graphic file (type png)
-<use images/trajectories.png>
-Package pdftex.def Info: images/trajectories.png  used on input line 89.
-(pdftex.def)             Requested size: 241.49895pt x 174.9822pt.
+<images/trajectories_fuel.png, id=19, 421.575pt x 316.18124pt>
+File: images/trajectories_fuel.png Graphic file (type png)
+<use images/trajectories_fuel.png>
+Package pdftex.def Info: images/trajectories_fuel.png  used on input line 89.
+(pdftex.def)             Requested size: 241.49895pt x 181.12737pt.
  [2]
-<images/controls.png, id=24, 429.10312pt x 310.91156pt>
-File: images/controls.png Graphic file (type png)
-<use images/controls.png>
-Package pdftex.def Info: images/controls.png  used on input line 96.
-(pdftex.def)             Requested size: 241.49895pt x 174.9822pt.
- [3 <./images/trajectories.png (PNG copy)> <./images/controls.png (PNG copy)>] [4] (./main.aux) ) 
+<images/controls_fuel.png, id=24, 421.575pt x 316.18124pt>
+File: images/controls_fuel.png Graphic file (type png)
+<use images/controls_fuel.png>
+Package pdftex.def Info: images/controls_fuel.png  used on input line 96.
+(pdftex.def)             Requested size: 241.49895pt x 181.12737pt.
+<images/trajectories_time.png, id=25, 414.04688pt x 321.45094pt>
+File: images/trajectories_time.png Graphic file (type png)
+<use images/trajectories_time.png>
+Package pdftex.def Info: images/trajectories_time.png  used on input line 106.
+(pdftex.def)             Requested size: 241.49895pt x 187.49623pt.
+ [3 <./images/trajectories_fuel.png (PNG copy)> <./images/controls_fuel.png (PNG copy)>]
+<images/controls_time.png, id=29, 421.575pt x 316.18124pt>
+File: images/controls_time.png Graphic file (type png)
+<use images/controls_time.png>
+Package pdftex.def Info: images/controls_time.png  used on input line 113.
+(pdftex.def)             Requested size: 241.49895pt x 181.12737pt.
+ [4 <./images/trajectories_time.png (PNG copy)> <./images/controls_time.png (PNG copy)>] [5] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 2732 strings out of 480129
- 40333 string characters out of 5893409
- 329708 words of memory out of 5000000
- 20672 multiletter control sequences out of 15000+600000
+ 2748 strings out of 480129
+ 40867 string characters out of 5893409
+ 329724 words of memory out of 5000000
+ 20686 multiletter control sequences out of 15000+600000
  477795 words of font info for 62 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  55i,13n,62p,379b,232s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (4 pages, 217012 bytes).
+Output written on main.pdf (5 pages, 273078 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

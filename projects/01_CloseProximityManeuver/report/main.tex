@@ -82,23 +82,38 @@ The average times are shown below in Table \ref{tab:timing}.
 \label{tab:timing}
 \end{table}
 
-The resulting trajectories and control inputs are shown below in Figures \ref{fig:trajectories} and \ref{fig:controls}.
+The resulting trajectories and control inputs are shown below in Figures \ref{fig:trajectories-fuel} and \ref{fig:controls-fuel}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{images/trajectories.png}
-  \caption{Generated trajectories from each solver}
-  \label{fig:trajectories}
+  \includegraphics[width=0.7\textwidth]{images/trajectories_fuel.png}
+  \caption{Generated fuel-optimal trajectories from each solver}
+  \label{fig:trajectories-fuel}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{images/controls.png}
-  \caption{Generated control inputs from each solver}
-  \label{fig:controls}
+  \includegraphics[width=0.7\textwidth]{images/controls_fuel.png}
+  \caption{Generated fuel-optimal control inputs from each solver}
+  \label{fig:controls-fuel}
 \end{figure}
 
 Additionally, it was found using \texttt{linprog} with the \texttt{dual-simplex} method that the minimum time needed to perform the maneuver was 21 minutes.
+The generated time-optimal trajectories and controls are shown below in Figures \ref{fig:trajectories-time} and \ref{fig:controls-time}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/trajectories_time.png}
+  \caption{Generated time-optimal trajectories from each solver}
+  \label{fig:trajectories-time}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/controls_time.png}
+  \caption{Generated time-optimal control inputs from each solver}
+  \label{fig:controls-time}
+\end{figure}
 
 \section*{Conclusion}
 

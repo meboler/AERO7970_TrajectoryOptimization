@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1665423360 "/home/matt/Documents/Classes/AERO7970_TrajectoryOptimization/projects/01_CloseProximityManeuver/report/main.tex" "main.pdf" "main" 1665423360
+["pdflatex"] 1665438790 "/home/matt/Documents/Classes/AERO7970_TrajectoryOptimization/projects/01_CloseProximityManeuver/report/main.tex" "main.pdf" "main" 1665438790
   "/etc/texmf/web2c/texmf.cnf" 1665069439 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/matt/Documents/Classes/AERO7970_TrajectoryOptimization/projects/01_CloseProximityManeuver/report/main.tex" 1665423359 3968 49c9fda712165897a5dce2b08d0c6dc6 ""
+  "/home/matt/Documents/Classes/AERO7970_TrajectoryOptimization/projects/01_CloseProximityManeuver/report/main.tex" 1665438789 4579 586ab85e40dd72419da367de78d0b4e1 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -71,10 +71,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1665069818 165301 17f4feb8968a9d147a251d35009f7543 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1665069825 1484593 0a25a47e61b3f5f8b34ef685bf200191 ""
-  "images/controls.png" 1665361788 24558 f840bf948017c6a119cc091625364c35 ""
-  "images/trajectories.png" 1665361768 19940 893de83fb8f3aa8f848eea5d4ea8a202 ""
-  "main.aux" 1665423360 776 760827609e7b7e26d1488a4207ad083c "pdflatex"
-  "main.tex" 1665423359 3968 49c9fda712165897a5dce2b08d0c6dc6 ""
+  "images/controls_fuel.png" 1665438617 27514 717fd737cac57c10b40feed648e17c50 ""
+  "images/controls_time.png" 1665438641 29341 2c36580efd9fc356d7832f2364408ff4 ""
+  "images/trajectories_fuel.png" 1665438607 20699 c72afcc06f61a2fcaaaac9c2f64b9797 ""
+  "images/trajectories_time.png" 1665438630 22188 a1e84646c19ace20346a148945c2dbf3 ""
+  "main.aux" 1665438790 1202 41a2c6cb380fc3f2dd40c3285143acf9 "pdflatex"
+  "main.tex" 1665438789 4579 586ab85e40dd72419da367de78d0b4e1 ""
   (generated)
   "main.aux"
   "main.log"
