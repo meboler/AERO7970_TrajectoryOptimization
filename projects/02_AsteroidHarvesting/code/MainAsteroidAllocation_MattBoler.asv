@@ -1,0 +1,23 @@
+%{
+
+%}
+clc; clear all; close all;
+import soln.*;
+
+%% Load and process data
+% Load as table
+asteroidTable = soln.getData();
+
+% Convert to matrix and remove ID column
+asteroidMatrix = table2array(asteroidTable);
+asteroidMatrix = asteroidMatrix(:, 2:end);
+
+
+
+%% Build problem
+problem = soln.buildProblem(asteroidMatrix);
+
+%% Solve
+[soln, fval, flag, out] = solve(problem);
+
+%% Visualize solution
