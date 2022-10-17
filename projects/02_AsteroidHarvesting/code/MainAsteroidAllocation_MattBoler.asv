@@ -12,12 +12,27 @@ asteroidTable = soln.getData();
 asteroidMatrix = table2array(asteroidTable);
 asteroidMatrix = asteroidMatrix(:, 2:end);
 
+% Make it simple
+asteroidMatrix = asteroidMatrix(1:100, :);
 
+[nAsteroids, nStations] = size(asteroidMatrix);
 
 %% Build problem
 problem = soln.buildProblem(asteroidMatrix);
 
 %% Solve
+opts = op
 [soln, fval, flag, out] = solve(problem);
 
+selections = soln.X;
+lowerBound = soln.S;
+
 %% Visualize solution
+masses = zeros(1, nStations);
+for i = 1 : nStations
+    masses(i) = asteroidMatrix(:, i)' * selections(:, i);
+end
+
+figure()
+bar(masses)
+title("Station Masses")

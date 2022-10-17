@@ -1,7 +1,9 @@
 %{
 
 %}
-clc; clear all; close all;
+clear all; close all;
+format longg 
+
 import soln.*;
 
 %% Load and process data
@@ -12,22 +14,17 @@ asteroidTable = soln.getData();
 asteroidMatrix = table2array(asteroidTable);
 asteroidMatrix = asteroidMatrix(:, 2:end);
 
-% Make it simple
-asteroidMatrix = asteroidMatrix(1:25, :);
-
 [nAsteroids, nStations] = size(asteroidMatrix);
 
 %% Build problem
 problem = soln.buildProblem(asteroidMatrix);
 
 %% Solve
-
 % https://www.mathworks.com/help/optim/ug/tuning-integer-linear-programming.html
+opts = optimoptions('intlinprog', ...
+    'MaxTime', 30 * 60);
 
-options = optimoptions(...
-    'intlinprog');
-
-[soln, fval, flag, out] = solve(problem);
+[soln, fval, flag, out] = solve(problem, 'Solver', 'intlinprog', 'Options', opts);
 
 selections = soln.X;
 lowerBound = soln.S;
