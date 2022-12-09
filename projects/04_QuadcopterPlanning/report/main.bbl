@@ -1,0 +1,17 @@
+\begin{thebibliography}{1}
+
+\bibitem{mao_successive_2019}
+Yuanqi Mao, Michael Szmuk, Xiangru Xu, and Behcet Acikmese.
+\newblock Successive {Convexification}: {A} {Superlinearly} {Convergent}
+  {Algorithm} for {Non}-convex {Optimal} {Control} {Problems}, February 2019.
+\newblock arXiv:1804.06539 [math].
+
+\bibitem{szmuk_convexification_2017}
+Michael Szmuk, Carlo~Alberto Pascucci, Daniel Dueri, and Behcet Acikmese.
+\newblock Convexification and real-time on-board optimization for agile
+  quad-rotor maneuvering and obstacle avoidance.
+\newblock In {\em 2017 {IEEE}/{RSJ} {International} {Conference} on
+  {Intelligent} {Robots} and {Systems} ({IROS})}, pages 4862--4868, Vancouver,
+  BC, September 2017. IEEE.
+
+\end{thebibliography}

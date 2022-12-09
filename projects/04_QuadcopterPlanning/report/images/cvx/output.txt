@@ -1,0 +1,13 @@
+Testing CVX performance
+ - Iteration: 1, 2.3492
+ - Iteration: 2, 2.3063
+ - Iteration: 3, 2.3183
+ - Iteration: 4, 2.2605
+ - Iteration: 5, 2.2148
+ - Iteration: 6, 2.1939
+ - Iteration: 7, 2.2043
+ - Iteration: 8, 2.2814
+ - Iteration: 9, 2.3704
+ - Iteration: 10, 2.1954
+Average time to solve with CVX: 
+    2.2695
